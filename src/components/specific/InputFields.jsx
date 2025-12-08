@@ -1,59 +1,88 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
 import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const { height, width } = Dimensions.get('window');
+
 
 const InputFields = ({ email, setEmail, password, setPassword }) => {
 
  return (
-        <View style={styles.container}>
-    <Text style={styles.heading}>Login</Text>
+
+    <SafeAreaView style={styles.container}>
+
+    <View style={styles.formContainer}>
     <TextInput style={styles.input}
-    placeholder='Email'
+    placeholder='Enter Your Email'
     value={email}
     onChangeText={setEmail}
     keyboardType='email-address'
     autoCapitalize='none'
     placeholderTextColor={'#999'}
     />
+    <Text style={styles.inputLabel}>User Name / Email</Text>
+    </View>
 
-    <TextInput style={styles.input}
-    placeholder='password'
+
+    <View style={styles.passwordContainer} >
+    <TextInput style={styles.passwordInput}
+    placeholder='***********'
     value={password} 
     onChangeText={setPassword}
     placeholderTextColor={'#999'}
     secureTextEntry={true}
     />
-        </View>
-
+    <Text style={styles.inputLabel}>Password</Text>
+    </View>
+    
+    </SafeAreaView>
   );
 };
 
 export default InputFields; 
 
 const styles = StyleSheet.create({
-     container : {
-        justifyContent : "center",
-        paddingHorizontal : 20,
-        paddingTop : 40,
-        backgroundColor : '#f0f0f0',
-    },
+    container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+  },
 
-    heading : {
-        fontSize : 20,
-        fontWeight : "bold",
-        marginBottom : 30,
-        textAlign : 'center',
-        color : "#333",
-    }, 
+    formContainer: {
+    marginBottom: height * 0.15, // Push buttons down
+  },
 
-    input : {
-        height : 50,
-        borderColor : '#ccc',
-        borderWidth : 1,
-        marginBottom : 20,
-        paddingHorizontal : 15,
-        borderRadius : 10,
-        backgroundColor : '#fff',
-        fontSize : 16,
-        color : '#333',
-    }
+     formContainer: {
+    marginBottom: height * 0.15,
+  },
+
+  input: {
+    height: 55,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    marginBottom: 25,
+  },
+  inputLabel: {
+    position: 'absolute',
+    top: -10, 
+    left: 15,
+    fontSize: 12,
+    color: '#888',
+    backgroundColor: '#fff',
+    paddingHorizontal: 5,
+  },
+  
+  passwordContainer: {
+    height: 55,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    justifyContent: 'center',
+  },
+  passwordInput: {
+    flex: 1,
+    paddingHorizontal: 15,
+  },
 });
