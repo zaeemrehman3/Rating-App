@@ -1,28 +1,43 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Splash from '../assets/images/Splash.png'
+import Loginbtn from '../components/specific/Loginbtn';
+import Signupbtn from '../components/specific/Signupbtn';
+
+const { width, height } = Dimensions.get('window');
 
 const Authscreen = () => {
   return (
     <SafeAreaView style={styles.container}>
+
+    <View style={styles.imageContainer} >
+         <Image 
+        source={Splash}
+        style={styles.image}
+        resizeMode="contain"
+      />
+        </View>    
+
+
     <View style={styles.textContainer} > 
         <Text style={styles.title} >Revolutionizing</Text>
 
          <Text> 
         <Text style={[styles.title, styles.highlight]}>Employee</Text>
         <Text style={styles.title} > Insights</Text>
-        </Text>  
+         </Text>  
         
         <Text style={styles.description} >An App for companies to manage employees, provide transparent rating and highlight to performers for growth and evaluation</Text>
     </View>
 
 
     <View>
-        <Text>Authentication</Text>
+        <Loginbtn />
     </View> 
 
      <View>
-        <Text>Authentication</Text>
+        <Signupbtn />
     </View>       
 
 
@@ -33,6 +48,18 @@ const Authscreen = () => {
 export default Authscreen;
 
 const styles = StyleSheet.create({
+
+    imageContainer: {
+    height: height * 0.45, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+
+    image: {
+    width: '100%',
+    height: '100%',
+  },
 
     container: {
     flex: 1,
@@ -63,6 +90,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     lineHeight: 20,
   },
+
+  
 
 
 });
