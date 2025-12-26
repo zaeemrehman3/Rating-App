@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { View, Text, TouchableOpacity,  StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import InputFields from '../components/specific/InputFields';
 import Button from '../components/specific/Button';
 import Validation from '../utils/Validation';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Loginscreen = () => {
+   const navigation = useNavigation();
+
    const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
       const [error, setError] = useState(null);
@@ -28,12 +33,17 @@ const  submitFunc = () => {
   return (
     <SafeAreaView style={styles.container} >
 
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-back" size={30} color="#000" />
+        </TouchableOpacity>
+
+
       <View style={styles.titleContainer}>
         <Text style={styles.mainTitle}>
           Log in to <Text style={styles.highlight}>grow</Text> 👋
         </Text>
         <Text style={styles.subtitle}>
-          Glad To Have You Back On Track!
+          Glad To Have You Back On Track! 
         </Text>
       </View>
 

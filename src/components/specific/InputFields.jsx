@@ -12,6 +12,8 @@ const InputFields = ({ email, setEmail, password, setPassword }) => {
     <SafeAreaView style={styles.container}>
 
     <View style={styles.formContainer}>
+          <Text style={styles.inputLabel}>User Name / Email</Text>
+
     <TextInput style={styles.input}
     placeholder='Enter Your Email'
     value={email}
@@ -20,11 +22,11 @@ const InputFields = ({ email, setEmail, password, setPassword }) => {
     autoCapitalize='none'
     placeholderTextColor={'#999'}
     />
-    <Text style={styles.inputLabel}>User Name / Email</Text>
     </View>
-
+ 
 
     <View style={styles.passwordContainer} >
+    <Text style={styles.inputLabel}>Password</Text>
     <TextInput style={styles.passwordInput}
     placeholder='***********'
     value={password} 
@@ -32,7 +34,6 @@ const InputFields = ({ email, setEmail, password, setPassword }) => {
     placeholderTextColor={'#999'}
     secureTextEntry={true}
     />
-    <Text style={styles.inputLabel}>Password</Text>
     </View>
     
     </SafeAreaView>
