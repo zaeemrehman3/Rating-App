@@ -18,7 +18,7 @@ const AuthStack = () => {
 
     <Stack.Screen name="Loginscreen" component={Loginscreen} options={{headerShown:false}} />
 
-    <Stack.Screen name='Signupscreen' component={Signupscreen} />
+    <Stack.Screen name='Signupscreen' component={Signupscreen} options={{headerShown:false}} />
 
 
 

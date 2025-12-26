@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, } from 'react-native';
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const { width, height } = Dimensions.get('window');
 
 
 const SplashScreen = () => {
@@ -21,7 +20,6 @@ const SplashScreen = () => {
     <View style={styles.container}>
       <Image
         source={require('../assets/images/Splash.png')}
-        style={styles.image}
       />
     </View>
   );
@@ -35,9 +33,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-  },
-  image: {
-    width: width * 0.8,
-    height: height * 0.4,
   },
 });
