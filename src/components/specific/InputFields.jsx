@@ -1,89 +1,70 @@
-import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-const { height, width } = Dimensions.get('window');
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const InputFields = ({ email, setEmail, password, setPassword }) => {
 
- return (
+  const [secure, setSecure] = useState(true);
 
-    <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView>
+      <View style={styles.form}>
 
-    <View style={styles.formContainer}>
-          <Text style={styles.inputLabel}>User Name / Email</Text>
+        <Text style={styles.label}>User Name / Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Your Username / Email"
+          placeholderTextColor="#999"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-    <TextInput style={styles.input}
-    placeholder='Enter Your Email'
-    value={email}
-    onChangeText={setEmail}
-    keyboardType='email-address'
-    autoCapitalize='none'
-    placeholderTextColor={'#999'}
-    />
-    </View>
- 
+        <Text style={[styles.label, { marginTop: 16 }]}>Password</Text>
+        <View style={styles.passwordBox}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="************"
+            placeholderTextColor="#999"
+            secureTextEntry={secure}
+            value={password}
+            onChangeText={setPassword}
+          />
 
-    <View style={styles.passwordContainer} >
-    <Text style={styles.inputLabel}>Password</Text>
-    <TextInput style={styles.passwordInput}
-    placeholder='***********'
-    value={password} 
-    onChangeText={setPassword}
-    placeholderTextColor={'#999'}
-    secureTextEntry={true}
-    />
-    </View>
-    
+          <TouchableOpacity onPress={() => setSecure(!secure)}>
+            <Ionicons
+              name={secure ? 'eye-off-outline' : 'eye-outline'}
+              size={22}
+              color="#999"
+            />
+          </TouchableOpacity>
+
+        
+        </View>
+
+         <TouchableOpacity style={styles.forgotBtn}>
+          <Text style={styles.forgotText}>Forgot Password?</Text>
+        </TouchableOpacity>
+
+      </View>
     </SafeAreaView>
   );
 };
 
-export default InputFields; 
+export default InputFields;
 
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
-  },
-
-    formContainer: {
-    marginBottom: height * 0.15, // Push buttons down
-  },
-
-     formContainer: {
-    marginBottom: height * 0.15,
-  },
-
-  input: {
-    height: 55,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginBottom: 25,
-  },
-  inputLabel: {
-    position: 'absolute',
-    top: -10, 
-    left: 15,
-    fontSize: 12,
-    color: '#888',
-    backgroundColor: '#fff',
-    paddingHorizontal: 5,
-  },
-  
-  passwordContainer: {
-    height: 55,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    justifyContent: 'center',
-  },
-  passwordInput: {
-    flex: 1,
-    paddingHorizontal: 15,
-  },
-});
+const styles = StyleSheet.create({ 
+  form: { marginTop: 40, },
+   label: { fontSize: 14, color: '#000', marginBottom: 6, },
+    input: { height: 50, borderWidth: 1, borderColor: '#007AFF', borderRadius: 8, paddingHorizontal: 12, }, 
+    passwordBox: { height: 50, borderWidth: 1, borderColor: '#E0E0E0', borderRadius: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }, 
+    passwordInput: { flex: 1, marginRight: 8, }, 
+    forgotBtn: { alignSelf: 'flex-end', marginTop: 8, }, 
+    forgotText: { color: '#9B9B9B', fontSize: 12, }, 
+  });
