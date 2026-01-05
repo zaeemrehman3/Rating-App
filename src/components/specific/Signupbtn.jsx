@@ -1,33 +1,36 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Signupbtn = () => {
-
-   const navigation = useNavigation();
+  const navigation = useNavigation();
   
-    const handleSignupPress = () => {
-      navigation.navigate('Signupscreen');
-    };
+  const handleSignupPress = () => {
+    navigation.navigate('Signupscreen');
+  };
 
   return (
-   <TouchableOpacity style={[styles.button, styles.secondaryButton]}  onPress={handleSignupPress} >
-    <Text style={styles.secondaryButtonText} >Sign Up</Text>
-   </TouchableOpacity>
+    <TouchableOpacity 
+      style={[styles.button, styles.secondaryButton]} 
+      onPress={handleSignupPress}
+    >
+      <Text style={styles.secondaryButtonText}>Sign Up</Text>
+    </TouchableOpacity>
   );
 };
 
 export default Signupbtn;
 
 const styles = StyleSheet.create({
-
-   button: {
-    height: 50,
-    borderRadius: 10,
+  button: {
+    height: hp('6.5%'), 
+    borderRadius: wp('2.5%'), 
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 15,
+    marginTop: hp('2%'),
+    width: wp('85%'),
+    alignSelf: 'center',
   },
 
   secondaryButton: {
@@ -38,8 +41,7 @@ const styles = StyleSheet.create({
 
   secondaryButtonText: {
     color: '#000',
-    fontSize: 18,
+    fontSize: hp('2.1%'), 
     fontWeight: '600',
   },
-
 });

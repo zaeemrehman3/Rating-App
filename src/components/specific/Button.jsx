@@ -1,59 +1,74 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
-const Button = ({submitFunc}) => {
+const Button = ({ submitFunc }) => {
   const navigation = useNavigation();
+
   return (
-    <SafeAreaView>
-    <View>
-        <TouchableOpacity style={styles.button} onPress={submitFunc}>
-            <Text style={styles.buttonText}>Login</Text>
+    <View style={styles.container}>
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={submitFunc }
+        activeOpacity={0.8}
+      >
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
+
+      <View style={styles.signupRow}>
+        <Text style={styles.signupText}>Don't have an account ? </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Signupscreen')}>
+          <Text style={styles.signupLink}>Sign Up</Text>
         </TouchableOpacity>
-        
+      </View>
     </View>
-     <View style={styles.signupRow}>
-          <Text style={styles.signupText}>Don’t have an account ?</Text>
-          <TouchableOpacity onPress={()=> navigation.navigate('Signupscreen')} >
-            <Text style={styles.signupLink}> Sign Up</Text>
-          </TouchableOpacity>
-     </View>
-        </SafeAreaView>
   );
 };
 
 export default Button;
 
+
 const styles = StyleSheet.create({
-     button : {
-    // marginTop: 80,
-    height: 52,
+  container: {
+    paddingHorizontal: wp('5%'),
+    marginTop: hp('4%'),
+  },
+  button: {
+    height: hp('7%'),
     backgroundColor: '#007AFF',
-    borderRadius: 10,
+    borderRadius: wp('2.5%'),
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#007AFF',
+    shadowOffset: {
+      width: 0,
+      height: 4,
     },
-
-    buttonText : {
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  buttonText: {
     color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-    },
-
-     signupRow: {
+    fontSize: wp('4.2%'),
+    fontWeight: '700',
+  },
+  signupRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: hp('2.5%'),
   },
-
   signupText: {
-    color: '#9B9B9B',
+    color: '#4B4B4B', 
+    fontSize: wp('3.5%'),
   },
-
   signupLink: {
     color: '#007AFF',
-    fontWeight: '600',
+    fontWeight: '500',
+    fontSize: wp('3.5%'),
   },
-
 });

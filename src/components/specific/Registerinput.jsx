@@ -6,40 +6,53 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const Registerinput = ({ email, setEmail, password, setPassword }) => {
-
   const [secure, setSecure] = useState(true);
+  const [confirmSecure, setConfirmSecure] = useState(true);
 
   return (
-    <SafeAreaView>
-      <View style={styles.form}>
-
-        <Text style={styles.label}>User Name</Text>
+    <View style={styles.form}>
+      {/* User Name Field */}
+      <View style={styles.inputContainer}>
+        <View style={styles.labelWrapper}>
+          <Text style={styles.label}>Username</Text>
+        </View>
         <TextInput
           style={styles.input}
-          placeholder="Enter Your Username"
+          placeholder="Sarakhan"
           placeholderTextColor="#999"
         />
+      </View>
 
-
-        <Text style={[styles.label, { marginTop: 16 }]}>Your Company Email</Text>
+      {/* Email Field */}
+      <View style={[styles.inputContainer, { marginTop: hp('3%') }]}>
+        <View style={styles.labelWrapper}>
+          <Text style={styles.label}>Your Company Email</Text>
+        </View>
         <TextInput
-          style={styles.input}
-          placeholder="Enter Your Email"
+          style={[styles.input, styles.inactiveBorder]}
+          placeholder="sarakhan@360gmail.com"
           placeholderTextColor="#999"
           value={email}
           onChangeText={setEmail}
         />
+      </View>
 
-
-        <Text style={[styles.label, { marginTop: 16 }]}>Password</Text>
-        <View style={styles.passwordBox}>
+      {/* Password Field */}
+      <View style={[styles.inputContainer, { marginTop: hp('3%') }]}>
+        <View style={styles.labelWrapper}>
+          <Text style={styles.label}>Password</Text>
+        </View>
+        <View style={[styles.input, styles.inactiveBorder, styles.passwordRow]}>
           <TextInput
             style={styles.passwordInput}
-            placeholder="************"
+            placeholder="****************"
             placeholderTextColor="#999"
             secureTextEntry={secure}
             value={password}
@@ -48,69 +61,100 @@ const Registerinput = ({ email, setEmail, password, setPassword }) => {
           <TouchableOpacity onPress={() => setSecure(!secure)}>
             <Ionicons
               name={secure ? 'eye-off-outline' : 'eye-outline'}
-              size={22}
+              size={hp('2.5%')}
               color="#999"
             />
-            </TouchableOpacity>
-            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
 
-
-          <Text style={[styles.label, { marginTop: 16 }]}> Confirm Password</Text>
-        <View style={styles.passwordBox}>
+      {/* Confirm Password Field */}
+      <View style={[styles.inputContainer, { marginTop: hp('3%') }]}>
+        <View style={styles.labelWrapper}>
+          <Text style={styles.label}>Confirm Password</Text>
+        </View>
+        <View style={[styles.input, styles.inactiveBorder, styles.passwordRow]}>
           <TextInput
             style={styles.passwordInput}
-            placeholder="************"
+            placeholder="****************"
             placeholderTextColor="#999"
-            secureTextEntry={secure}
-            // value={password}
-            // onChangeText={setPassword}
+            secureTextEntry={confirmSecure}
           />
-          <TouchableOpacity onPress={() => setSecure(!secure)}>
+          <TouchableOpacity onPress={() => setConfirmSecure(!confirmSecure)}>
             <Ionicons
-              name={secure ? 'eye-off-outline' : 'eye-outline'}
-              size={22}
+              name={confirmSecure ? 'eye-off-outline' : 'eye-outline'}
+              size={hp('2.5%')}
               color="#999"
             />
-            </TouchableOpacity>
-
-          
-
-        
+          </TouchableOpacity>
         </View>
+      </View>
 
-               <View style={{marginTop:15}} >
-                 <Text style={styles.subtitle}>
-                   By Signing Up. You Agree To Our <Text style={styles.highlight} >Terms of Service</Text> And <Text style={styles.highlight} >Privacy Policy</Text>
-                 </Text>
-               </View>
-
-               </View>
-
-    </SafeAreaView>
+      {/* Terms and Policy */}
+      <View style={styles.termsContainer}>
+        <Text style={styles.subtitle}>
+          By Signing Up, You Agree To Our <Text style={styles.highlight}>Terms Of Service</Text> And <Text style={styles.highlight}>Privacy Policy</Text>
+        </Text>
+      </View>
+    </View>
   );
 };
 
 export default Registerinput;
 
-const styles = StyleSheet.create({ 
-  form: { marginTop: 40, },
-   label: { fontSize: 14, color: '#000', marginBottom: 6, },
-    input: { height: 50, borderWidth: 1, borderColor: '#007AFF', borderRadius: 8, paddingHorizontal: 12, }, 
-    passwordBox: { height: 50, borderWidth: 1, borderColor: '#E0E0E0', borderRadius: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }, 
-    passwordInput: { flex: 1, marginRight: 8, }, 
-    forgotBtn: { alignSelf: 'flex-end', marginTop: 8, }, 
-    forgotText: { color: '#9B9B9B', fontSize: 12, }, 
-    header: {
-    marginTop: 40,
+const styles = StyleSheet.create({
+  form: {
+    marginTop: hp('4%'),
   },
-
+  inputContainer: {
+    width: '100%',
+    position: 'relative', // Necessary for absolute label positioning
+  },
+  labelWrapper: {
+    position: 'absolute',
+    top: -hp('1.2%'), // Pulls label up to sit on the border
+    left: wp('3%'),
+    backgroundColor: '#fff', // Masks the border line behind the text
+    paddingHorizontal: wp('1%'),
+    zIndex: 1,
+  },
+  label: {
+    fontSize: hp('1.7%'),
+    color: '#000',
+    fontWeight: '600',
+  },
+  input: {
+    height: hp('6.5%'),
+    borderWidth: 1,
+    borderColor: '#007AFF', // Active border color
+    borderRadius: wp('2%'),
+    paddingHorizontal: wp('4%'),
+    fontSize: hp('1.8%'),
+    color: '#000',
+    justifyContent: 'center',
+  },
+  inactiveBorder: {
+    borderColor: '#E0E0E0',
+  },
+  passwordRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  passwordInput: {
+    flex: 1,
+    height: '100%',
+  },
+  termsContainer: {
+    marginTop: hp('3%'),
+    paddingHorizontal: wp('1%'),
+  },
+  subtitle: {
+    color: '#9B9B9B',
+    fontSize: hp('1.6%'),
+    lineHeight: hp('2.4%'),
+  },
   highlight: {
     color: '#007AFF',
+    fontWeight: '500',
   },
-  
- subtitle: {
-    // marginTop: 20,
-    color: '#9B9B9B',
-    fontSize: 13,
-  },
-  });
+});
