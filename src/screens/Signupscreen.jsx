@@ -40,7 +40,7 @@ const Signupscreen = () => {
         </TouchableOpacity>
         
     
-<View style={styles.icontainer}>
+<View style={[styles.icontainer, {marginTop:50}]}>
       <View style={styles.header}>
         <Text style={styles.title}>
           Start your <Text style={styles.highlight}>journey now!!</Text>

@@ -8,10 +8,13 @@ import {
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const InputFields = ({ email, setEmail, password, setPassword }) => {
 
   const [secure, setSecure] = useState(true);
+
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView>
@@ -48,7 +51,7 @@ const InputFields = ({ email, setEmail, password, setPassword }) => {
         
         </View>
 
-         <TouchableOpacity style={styles.forgotBtn}>
+         <TouchableOpacity style={styles.forgotBtn} onPress={()=> navigation.navigate('Forgotpasswordscreen')} >
           <Text style={styles.forgotText}>Forgot Password?</Text>
         </TouchableOpacity>
 

@@ -3,12 +3,12 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 
-const Registerbtn = ({submitFunc}) => {
+const Registerbtn = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView>
     <View style={{marginBottom:-10}} >
-        <TouchableOpacity style={styles.button} onPress={submitFunc}>
+        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Verificationscreen')}>
             <Text style={styles.buttonText}>Register Account</Text>
         </TouchableOpacity>
         
@@ -21,7 +21,7 @@ const Registerbtn = ({submitFunc}) => {
      </View>
         </SafeAreaView>
   );
-};
+}; 
 
 export default Registerbtn;
 
