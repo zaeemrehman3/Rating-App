@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
     position: 'relative', // Necessary for absolute label positioning
-  },
+  }, 
   labelWrapper: {
     position: 'absolute',
     top: -hp('1.2%'), // Pulls label up to sit on the border

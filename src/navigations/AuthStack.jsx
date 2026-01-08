@@ -7,24 +7,31 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Signupscreen from '../screens/Signupscreen';
 import Verificationscreen from '../screens/Verificationscreen'
 import Forgotpasswordscreen from '../screens/Forgotpasswordscreen';
+import Manageprofile from '../screens/Manageprofile';
 
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => {
   return (
-   <Stack.Navigator>
+   <Stack.Navigator
+   screenOptions={{headerShown:false}}
+   >
 
-    <Stack.Screen name='Splash' component={Splashscreen} options={{headerShown:false}} />
+    <Stack.Screen name='Splash' component={Splashscreen}/>
 
-    <Stack.Screen name="Auth" component={Authscreen} options={{headerShown:false}} />
+    <Stack.Screen name="Auth" component={Authscreen}/>
 
-    <Stack.Screen name="Loginscreen" component={Loginscreen} options={{headerShown:false}} />
+    <Stack.Screen name="Loginscreen" component={Loginscreen}/>
 
-    <Stack.Screen name='Signupscreen' component={Signupscreen} options={{headerShown:false}} />
+    <Stack.Screen name='Signupscreen' component={Signupscreen}/>
     
-    <Stack.Screen name='Verificationscreen' component={Verificationscreen} options={{headerShown:false}} />
+    <Stack.Screen name='Verificationscreen' component={Verificationscreen}/>
 
-    <Stack.Screen name='Forgotpasswordscreen' component={Forgotpasswordscreen} options={{headerShown:false}} />
+    <Stack.Screen name='Forgotpasswordscreen' component={Forgotpasswordscreen}/>
+
+    <Stack.Screen name='Manageprofile' component={Manageprofile}/>
+
+
 
 
 

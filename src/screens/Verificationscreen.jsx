@@ -38,7 +38,7 @@ const Verificationscreen = () => {
         Didn’t Receive Code? <Text style={styles.resend}>Resend</Text>
       </Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Manageprofile')} >
         <Text style={styles.buttonText}>Verify</Text>
       </TouchableOpacity>
     </SafeAreaView>
