@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
   },
   passwordBox: {
     height: hp('7%'),
-    borderWidth: 1.5,
-    borderRadius: wp('2.5%'),
+    borderWidth: 1,
+    borderRadius: wp('2%'),
     paddingHorizontal: wp('4%'),
     flexDirection: 'row',
     alignItems: 'center',
